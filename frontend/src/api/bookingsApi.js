@@ -1,4 +1,4 @@
-const API_URL = "";
+const API_URL = "https://reservation-system-2.onrender.com";
 
 export async function getResources() {
 const res = await fetch(`${API_URL}/resources`);
