@@ -31,7 +31,7 @@ return (
 <input
 type="text"
 placeholder="Your Name"
-className="border p-2 w-full mb-2"
+className="border p-2 w-full mb-2 border-[3px] border-blue-500 [border-style:outset]"
 value={name}
 onChange={(e) => setName(e.target.value)}
 />
@@ -39,7 +39,7 @@ onChange={(e) => setName(e.target.value)}
 
 <input
 type="time"
-className="border p-2 w-full mb-2"
+className="border p-2 w-full mb-2 border-[3px] border-blue-500 [border-style:outset]"
 value={time}
 onChange={(e) => setTime(e.target.value)}
 />
