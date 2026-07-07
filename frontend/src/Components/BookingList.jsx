@@ -5,7 +5,7 @@ export default function BookingList({ bookings }) {
 
 return (
 
-<div className="bg-white p-4 shadow rounded">
+<div className="bg-white p-4 shadow rounded border-3 border-blue-500 [border-style:outset]">
 <h2 className="text-lg font-semibold mb-2">Bookings</h2>
 
 {bookings.length === 0 && <p>No bookings yet.</p>}

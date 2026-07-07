@@ -8,38 +8,50 @@ export default function HomePage() {
   const [resources, setResources] = useState([]);
   const [selected, setSelected] = useState(null);
   const [bookings, setBookings] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  // Load resources on page load
   useEffect(() => {
-    getResources().then(setResources);
+    getResources()
+      .then((data) => {
+        setResources(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
+        setLoading(false);
+      });
   }, []);
 
-  // Load bookings when a resource is selected
-  useEffect(() => {
-    if (selected) {
-      getBookings(selected.id).then(setBookings);
-    }
-  }, [selected]);
+  const loadBookings = (resourceId) => {
+    getBookings(resourceId)
+      .then((res) => res.json())
+      .then((data) => setBookings(data))
+      .catch((err) => console.error(err));
+  };
+
+  const handleSelect = (resource) => {
+    setSelected(resource);
+    loadBookings(resource.id);
+  };
+
+  if (loading) {
+    return (
+      <div className="flex flex-col items-center justify-center h-64 gap-3">
+        <div className="w-10 h-10 border-4 border-gray-200 border-t-blue-500 rounded-full animate-spin"></div>
+        <p className="text-gray-600">Loading...</p>
+      </div>
+    );
+  }
 
   return (
     <div>
-      <ResourceList
-        resources={resources}
-        selected={selected}
-        onSelect={setSelected}
-      />
+      <ResourceList resources={resources} selected={selected} onSelect={handleSelect} />
 
       {selected && (
-        <>
-          <ReservationForm
-            resource={selected}
-            onBooked={() =>
-              getBookings(selected.id).then(setBookings)
-            }
-          />
-          <BookingList bookings={bookings} />
-        </>
+        <ReservationForm resource={selected} onBooked={() => loadBookings(selected.id)} />
       )}
+
+      <BookingList bookings={bookings} />
     </div>
   );
 }

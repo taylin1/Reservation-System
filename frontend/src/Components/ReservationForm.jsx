@@ -24,7 +24,7 @@ setTime("");
 
 
 return (
-<form onSubmit={handleSubmit} className="bg-white p-4 shadow rounded mb-4">
+<form onSubmit={handleSubmit} className="bg-white p-4 shadow border-3 border-blue-500 [border-style:outset] rounded mb-4">
 <h2 className="text-lg font-semibold mb-2">Book: {resource.name}</h2>
 
 
