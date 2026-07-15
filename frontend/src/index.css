@@ -1,8 +1,47 @@
 @import "tailwindcss";
 
-body{
-    background-color: gray;
+.spotlight-container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #000; /* dark base so glows are visible */
 }
- 
+
+.spotlight-overlay {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.spotlight {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60vw;
+  height: 60vw;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.5;
+}
+
+.spotlight-left {
+  background: radial-gradient(circle, rgba(59,130,246,0.6), transparent 70%);
+}
+
+.spotlight-mid {
+  background: radial-gradient(circle, rgba(168,85,247,0.6), transparent 70%);
+}
+
+.spotlight-right {
+  background: radial-gradient(circle, rgba(236,72,153,0.6), transparent 70%);
+}
+
+.spotlight-content {
+  position: relative;
+  z-index: 1;
+}
 
  

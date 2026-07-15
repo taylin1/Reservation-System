@@ -4,8 +4,7 @@ import React from "react";
 export default function ResourceList({ resources, selected, onSelect }) {
 return (
 <div className="mb-4">
-<h2 className="text-xl font-semibold mb-2">Please select a room</h2>
-<h2>Loading Rooms...</h2>
+<h2 className="text-xl font-semibold mb-2"><span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Please select a room</span></h2>
 <div className="flex gap-4 flex-wrap">
 {resources.map((item) => (
 <button
