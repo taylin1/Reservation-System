@@ -26,7 +26,6 @@ export default function HomePage() {
 
   const loadBookings = (resourceId) => {
     getBookings(resourceId)
-      .then((res) => res.json())
       .then((data) => setBookings(data))
       .catch((err) => console.error(err));
   };

@@ -24,30 +24,45 @@ setTime("");
 
 
 return (
-<form onSubmit={handleSubmit} className="bg-white p-4 shadow border-3 border-blue-500 [border-style:outset] rounded mb-4">
-<h2 className="text-lg font-semibold mb-2">Book: {resource.name}</h2>
+<form onSubmit={handleSubmit} className="p-4 bg-white/[0.04] backdrop-blur-xl border border-white/10 rounded-xl mb-6 max-w-md shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
+<h2 className="text-xl italic text-white mb-2" style={{fontFamily:"Fraunces, serif"}}>Book: {resource.name}</h2>
+
+   <div>
+          <label className="block text-[11px] uppercase tracking-[0.15em] text-white/40 mb-1.5">
+            Guest name
+          </label>
+          <input
+            type="text"
+            placeholder="Enter your name"
+            className="w-full bg-white/[0.05] border border-white/10 rounded-lg px-3 py-2 text-white
+              placeholder:text-white/30
+              focus:outline-none focus:ring-2 focus:ring-purple-400/40 focus:border-purple-400/60"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </div>
+ 
+        <div>
+          <label className="block text-[11px] uppercase tracking-[0.15em] text-white/40 mb-1.5">
+            Time
+          </label>
+          <input
+            type="time"
+            style={{ colorScheme: "dark" }}
+            className="w-full bg-white/[0.05] border border-white/10 rounded-lg px-3 py-2 text-white
+              focus:outline-none focus:ring-2 focus:ring-purple-400/40 focus:border-purple-400/60"
+            value={time}
+            onChange={(e) => setTime(e.target.value)}
+          />
+        </div>
+ 
 
 
-<input
-type="text"
-placeholder="Your Name"
-className="border p-2 w-full mb-2 border-[3px] border-blue-500 [border-style:outset]"
-value={name}
-onChange={(e) => setName(e.target.value)}
-/>
-
-
-<input
-type="time"
-className="border p-2 w-full mb-2 border-[3px] border-blue-500 [border-style:outset]"
-value={time}
-onChange={(e) => setTime(e.target.value)}
-/>
-
-
-<button className="bg-blue-500 text-white px-4 py-2 rounded">
-Book Now
-</button>
+<button className="my-5 w-full py-2.5 rounded-lg font-medium tracking-wide text-white
+            bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500
+            hover:brightness-110 transition-all
+            shadow-[0_4px_20px_rgba(168,85,247,0.35)]
+            disabled:opacity-50" >Book Now</button>
 </form>
 );
 }
