@@ -22,7 +22,7 @@ export default function ResourceList({ resources, selected, onSelect }) {
         </span>
       </div>
 
-      <div className="flex gap-4 flex-wrap">
+      <div className="flex overflow-x-auto sm:flex-wrap sm:overflow-visible gap-4 pb-2">
         {resources.map((item, i) => {
           const isSelected = selected && selected.id === item.id;
           const accent = ACCENTS[i % ACCENTS.length];
