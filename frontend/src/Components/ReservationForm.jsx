@@ -42,7 +42,7 @@ return (
           />
         </div>
  
-        <div>
+        <div className="overflow-hidden">
           <label className="block text-[11px] uppercase tracking-[0.15em] text-white/40 mb-1.5">
             Time
           </label>
