@@ -49,7 +49,7 @@ return (
           <input
             type="time"
             style={{ colorScheme: "dark" }}
-            className="w-full bg-white/[0.05] border border-white/10 rounded-lg px-3 py-2 text-white
+            className="w-full box-border bg-white/[0.05] border border-white/10 rounded-lg px-3 py-2 text-white
               focus:outline-none focus:ring-2 focus:ring-purple-400/40 focus:border-purple-400/60"
             value={time}
             onChange={(e) => setTime(e.target.value)}
