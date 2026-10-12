@@ -2,57 +2,34 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 const port = 5000;
+const path = require("path");
+require("dotenv").config();
 
+const reservationRoutes = require("./controllers/reservationController");
 
 app.use(cors());
 app.use(express.json());
 
 
-// Fake data 
-let resources = [
-{ id: 1, name: "Room A", type: "Meeting Room" },
-{ id: 2, name: "Room B", type: "Conference Room" },
-{ id: 3, name: "Desk 1", type: "Work Desk" },
-];
+const customLogger = (req, res, next) => {
+  const timestamp = new Date().toLocaleString();
+  console.log(`[${timestamp}] ${req.method} request made to: ${req.url}`);
+  next(); // Pass control to the next middleware/route handler
+};
+
+app.use(customLogger);
 
 
-let bookings = [];
+app.use("/static", express.static(path.join(__dirname, "public")));
 
-
-// Get all resources
-app.get("/resources", (req, res) => {
-res.json(resources);
-});
 
 app.get("/", (req, res) => {
   res.send("Backend is running!");
 });
 
 
-// Get bookings for a resource
-app.get("/bookings/:id", (req, res) => {
-const id = Number(req.params.id);
-const list = bookings.filter((b) => b.resourceId === id);
-res.json(list);
-});
-
-
-// Create a booking
-app.post("/book", (req, res) => {
-const { resourceId, name, time } = req.body;
-
-
-const newBooking = {
-id: bookings.length + 1,
-resourceId,
-name,
-time,
-};
-
-
-bookings.push(newBooking);
-res.json({ message: "Booking added", booking: newBooking });
-});
+// Mount reservation routes (controller folder)
+app.use("/", reservationRoutes);
 
 
 app.listen(port, () => console.log(`Server running on port ${port}`));
