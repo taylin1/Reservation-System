@@ -3,6 +3,16 @@ const supabase = require("../config/supabaseClient");
 
 const router = express.Router();
 
+const toApiBooking = (row) => {
+  if (!row) return row;
+  return {
+    id: row.id,
+    resourceId: row.resource_id,
+    name: row.customer_name,
+    time: row.booking_time,
+  };
+};
+
 
 
 // Get all resources
