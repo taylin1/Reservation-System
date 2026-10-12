@@ -1,4 +1,6 @@
-const API_URL = "https://reservation-system-2.onrender.com";
+// Override with VITE_API_URL (e.g. http://localhost:5000 in frontend/.env.local);
+// falls back to the deployed Render backend.
+const API_URL = import.meta.env.VITE_API_URL || "https://reservation-system-2.onrender.com";
 
 export async function getResources() {
 const res = await fetch(`${API_URL}/resources`);
